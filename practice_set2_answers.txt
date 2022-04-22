@@ -1,0 +1,339 @@
+Q 1
+Which declaration initializes a boolean variable?
+A. boolean h = 1;
+B. boolean k = 0;
+C. boolean m = null;
+D. boolean j = (1 < 5) ;
+Answer: D
+Explanation: The primitive type boolean has only two possible values: true and false. Here j is set
+to (1 <5), which evaluates to true.
+--------------------------------------------------------------------------------------------
+Q 2
+public class Basic {
+private static int letter;
+public static int getLetter();
+public static void Main(String[] args) {
+System.out.println(getLetter());
+}
+}
+Why will the code not compile?
+A. A static field cannot be private.
+B. The getLetter method has no body.
+C. There is no setletter method.
+D. The letter field is uninitialized.
+E. It contains a method named Main instead of ma
+
+Answer: B
+Explanation: The getLetter() method needs a body public static int getLetter() { }; .
+----------------------------------------------------------------------------------------------
+Q 3
+Given:
+public class Circle {
+double radius;
+public double area:
+public Circle (double r) { radius = r;}
+public double getRadius() {return radius;}
+public void setRadius(double r) { radius = r;}
+public double getArea() { return /* ??? */;}
+}
+class App {
+public static void main(String[] args) {
+Circle c1 = new Circle(17.4);
+c1.area = Math.PI * c1.getRadius() * c1.getRadius();
+}
+}
+This class is poorly encapsulated. You need to change the circle class to compute and return the
+area instead.
+What three modifications are necessary to ensure that the class is being properly encapsulated?
+A. Change the access modifier of the setradius () method to private
+B. Change the getArea () method
+public double getArea () { return area; }
+C. When the radius is set in the Circle constructor and the setRadius () method, recomputed the
+area and store it into the area field
+D. Change the getRadius () method:
+public double getRadius () {
+area = Math.PI * radius * radius;
+return radius;
+}
+Answer: A,B,C
+Explanation: A: There is no need to have SetRadius as public as the radius can be set through
+the Circle method.
+B: We need to return the area in the GetArea method.
+C: When the radius changes the Area must change as well.
+Incorrect answer:
+D: the GetRadius() method does not change the radius, so there is no need to recomputed the
+area
+-------------------------------------------------------------------------------------------------
+Q 4
+Given the following code:
+public class Simple { /* Line 1 */
+public float price; /* Line 2 */
+public static void main (String[] args) { /* Line 3 */
+Simple price = new Simple (); /* Line 4 */
+price = 4; /* Line 5 */
+} /* Line 6 */
+} /* Line 7 */
+What will make this code compile and run?
+A. Change line 2 to the following:
+Public int price
+B. Change line 4 to the following:
+int price = new simple ();
+C. Change line 4 to the following:
+Float price = new simple ();
+D. Change line 5 to the following:
+Price = 4f;
+Oracle 1z0-803 Exam
+"Pass Any Exam. Any Time." - www.actualtests.com 41
+E. Change line 5 to the following:
+price.price = 4;
+F. Change line 5 to the following:
+Price = (float) 4:
+G. Change line 5 to the following:
+Price = (Simple) 4;
+H. The code compiles and runs properly; no changes are necessary
+Answer: E
+Explanation: price.price =4; is correct, not price=4;
+The attribute price of the instance must be set, not the instance itself
+-----------------------------------------------------------------------------------------
+Q 5
+Given:
+public class DoWhile {
+public static void main (String [] args) {
+int ii = 2;
+do {
+System.out.println (ii);
+} while (--ii);
+}
+}
+What is the result?
+A. 2
+1
+B. 2
+1
+0
+C. null
+D. an infinite loop
+E. compilation fails
+
+Answer: E
+Explanation: The line while (--ii); will cause the compilation to fail.
+--ii is not a boolean value.
+A correct line would be while (--ii>0);
+--------------------------------------------------------------------------------------------------
+Q 6
+You are writing a method that is declared not to return a value. Which two are permitted in the
+method body?
+A. omission of the return statement
+B. return null;
+C. return void;
+D. return;
+Answer: A,D
+Explanation: Any method declared void doesn't return a value. It does not need to contain a
+return statement, but it may do so. In such a case, a return statement can be used to branch out of
+a control flow block and exit the method and is simply used like this:
+return;
+--------------------------------------------------------------------------------------------
+Q 7
+Which three are valid types for switch?
+A. int
+B. float
+C. double
+D. integer
+E. String
+F. Float
+Answer: A,D,E
+Explanation: A switch works with the byte, short, char, and int primitive data types. It also works
+with enumerated types the String class, and a few special classes that wrap certain primitive
+types: Character, Byte, Short, and Integer.
+------------------------------------------------------------------------------------------
+Q 8
+
+Given the code fragment:
+Boolean b1 = true;
+Boolean b2 = false;
+int 1 = 0;
+while (foo) {}
+Which one is valid as a replacement for foo?
+A. b1.compareTo(b2)
+B. i = 1
+C. i == 2? -1:0
+D. "foo".equals("bar")
+Answer: D
+Explanation: equals works fine on strings. equals produces a Boolean value.
+----------------------------------------------------------------------------------------------------
+Q 9
+public class SuperTest {
+public static void main(String[] args) {
+statement1
+statement2
+statement3
+}
+}
+class Shape {
+public Shape() {
+System.out.println("Shape: constructor");
+}
+public void foo() {
+System.out.println("Shape: foo");
+}
+}
+class Square extends Shape {
+public Square() {
+super();
+}
+public Square(String label) {
+System.out.println("Square: constructor");
+}
+public void foo() {
+super.foo();
+}
+public void foo(String label) {
+System.out.println("Square: foo"); 
+
+}
+}
+What should statement1, statement2, and statement3, be respectively, in order to produce the
+result?
+Shape: constructor
+Square: foo
+Shape: foo
+A. Square square = new Square ("bar");
+square.foo ("bar");
+square.foo();
+B. Square square = new Square ("bar");
+square.foo ("bar");
+square.foo ("bar");
+C. Square square = new Square ();
+square.foo ();
+square.foo(bar);
+D. Square square = new Square ();
+square.foo ();
+square.foo("bar");
+E. Square square = new Square ();
+square.foo ();
+square.foo ();
+Answer: D
+------------------------------------------------------------------------------------------------------
+Q 10
+Give:
+Public Class Test {
+}
+Which two packages are automatically imported into the java source file by the java compiler?
+A. Java.lang
+B. Java.awt
+C. Javax.net
+
+D. Java.*
+E. The package with no name
+Answer: A,E
+Explanation: For convenience, the Java compiler automatically imports three entire packages for
+each source file: (1) the package with no name, (2) the java.lang package, and (3) the current
+package (the package for the current file).
+Note:Packages in the Java language itself begin with java. or javax.
+----------------------------------------------------------------------------------------------------
+Q 11
+Given:
+public class X implements Z {
+public String toString() { return "I am X"; }
+public static void main(String[] args) {
+Y myY = new Y();
+X myX = myY;
+Z myZ = myX;
+System.out.println(myZ);
+}
+}
+class Y extends X {
+public String toString() { return "I am Y"; }
+}
+interface Z {}
+What is the reference type of myZ and what is the type of the object it references?
+A. Reference type is Z; object type is Z.
+B. Reference type is Y; object type is Y.
+C. Reference type is Z; object type is Y.
+D. Reference type is X; object type is Z.
+Answer: B
+Explanation: Note: Because Java handles objects and arrays by reference, classes and array
+types are known as reference types.
+---------------------------------------------------------------------------------------------
+Q 12
+Which two will compile, and can be run successfully using the command:
+Java fred1 hello walls
+A. class Fred1{
+public static void main (String args) {
+System.out.println(args[1]);
+}
+}
+B. class Fred1{
+public static void main (String [] args) {
+System.out.println(args[2]);
+}
+}
+C. class Fred1 {
+public static void main (String [] args) {
+System.out.println (args);
+}
+}
+D. class Fred1 {
+public static void main (String [] args) {
+System.out.println (args [1]);
+}
+}
+Answer: C,D
+Explanation: Throws java.lang.ArrayIndexOutOfBoundsException: 2
+at certquestions.Fred1.main(Fred1.java:3)
+C. Prints out: [Ljava.lang.String;@39341183
+D. Prints out: walls
+---------------------------------------------------------------------------------------------
+Q 13
+Given:
+public abstract class Wow {
+private int wow;
+public wow (int wow) {
+this.wow = wow;
+}
+public void wow () {}
+private void wowza () {}
+}
+What is true about the class Wow?
+A. It compiles without error.
+B. It does not compile because an abstract class cannot have private methods.
+C. It does not compile because an abstract class cannot have instance variables.
+D. It does not compile because an abstract class must have at least one abstract method.
+E. It does not compile because an abstract class must have a constructor with no arguments.
+Answer: C
+Explanation: An abstract class is a class that is declared abstract—it may or may not include
+abstract methods (not B, not D). Abstract classes cannot be instantiated, but they can be
+subclassed.
+The code compiles with a failure for line 'public wow (int wow) {
+------------------------------------------------------------------------------------------------
+
+Q 14
+Given:
+
+class X {
+static void m(int i) {
+}
+public static void main (String [] args) {
+int j = 12;
+m (j);
+System.out.println(j);
+}
+}
+What is the result?
+A. 7
+B. 12
+C. 19
+D. Compilation fails
+E. An exception is thrown at run time
+Answer: B
+------------------------------------------------------------------------------------------------
+Q 15
+Which two statements are true?
+A. An abstract class can implement an interface.
+B. An abstract class can be extended by an interface.
+C. An interface CANNOT be extended by another interface.
+D. An interface can be extended by an abstract class.
+E. An abstract class can be extended by a concrete class.
+F. An abstract class CANNOT be extended by an abstract class.
+Answer: A,E
+------------------------------------------------------------------------------------------------------

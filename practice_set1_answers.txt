@@ -1,0 +1,567 @@
+public class Student {
+public String name = "";
+public int age = 0;
+public String major = "Undeclared";
+public boolean fulltime = true;
+
+public void display() {
+System.out.println("Name: " + name + " Major: " + major);
+}
+public boolean isFullTime() {
+return fulltime;
+}
+}
+Given:
+Public class TestStudent {
+Public static void main(String[] args) {
+Student bob = new Student ();
+Student jian = new Student();
+bob.name = "Bob";
+bob.age = 19;
+jian = bob; jian.name = "Jian";
+System.out.println("Bob's Name: " + bob.name);
+}
+}
+What is the result when this program is executed?
+A. Bob's Name: Bob
+B. Bob's Name: Jian
+C. Nothing prints
+D. Bob’s name
+Answer: B
+Explanation: After the statement jian = bob; the jian will reference the same object as bob.
+
+String valid = "true";
+if (valid) System.out.println (“valid”);
+else System.out.println ("not valid");
+What is the result?
+A. Valid
+B. not valid
+C. Compilation fails
+D. An IllegalArgumentException is thrown at run time
+
+Answer: C
+Explanation: In segment 'if (valid)' valid must be of type boolean, but it is a string.
+This makes the compilation fail.
+----------------------------------------------------------------------------------------------------
+public class ScopeTest {
+int z;
+public static void main(String[] args){
+ScopeTest myScope = new ScopeTest();
+int z = 6;
+System.out.println(z);
+myScope.doStuff();
+System.out.println(z);
+System.out.println(myScope.z);
+}
+
+void doStuff() {
+int z = 5;
+doStuff2();
+System.out.println(z);
+}
+void doStuff2() {
+z=4;
+}
+}
+What is the result?
+A. 6 5 6 4
+B. 6 5 5 4
+C. 6 5 6 6
+D. 6 5 6 5
+Answer: A
+Explanation: Within main z is assigned 6. z is printed. Output: 6
+Within doStuff z is assigned 5.DoStuff2 locally sets z to 4 (but MyScope.z is set to 4), but in
+Dostuff z is still 5. z is printed. Output: 5
+Again z is printed within main (with local z set to 6). Output: 6
+Finally MyScope.z is printed. MyScope.z has been set to 4 within doStuff2(). Output: 4
+----------------------------------------------------------------------------------------
+Given the code fragment:
+int b = 4;
+b -- ;
+System.out.println (-- b);
+System.out.println(b);
+What is the result?
+A. 2 2
+B. 1 2
+C. 3 2
+D. 3 3
+Answer: A
+Explanation: Variable b is set to 4.
+Variable b is decreased to 3.
+Variable b is decreased to 2 and then printed. Output: 2
+Variable b is printed. Output: 2
+------------------------------------------------------------------------------------------------------
+Given the code fragment:
+Int [] [] array = {{0}, {0, 1}, {0, 2, 4}, {0, 3, 6, 9}, {0, 4, 8, 12, 16}};
+Systemout.printIn(array [4] [1]);
+System.out.printIn (array) [1][4]);
+int [] [] array = {{0}, {0, 1}, {0, 2, 4}, {0, 3, 6, 9}, {0, 4, 8, 12, 16}};
+System.out.println(array [4][1]);
+System.out.println(array) [1][4]);
+What is the result?
+A. 4 Null
+B. Null 4
+C. An IllegalArgumentException is thrown at run time
+D. 4 An ArrayIndexOutOfBoundException is thrown at run time
+
+Answer: D
+Explanation: The first println statement, System.out.println(array [4][1]);, works fine. It selects the
+element/array with index 4, {0, 4, 8, 12, 16}, and from this array it selects the element with index 1,
+4. Output: 4
+The second println statement, System.out.println(array) [1][4]);, fails. It selects the array/element
+with index 1, {0, 1}, and from this array it try to select the element with index 4. This causes an
+exception.
+Output:
+4
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 4
+------------------------------------------------------------------------------------------------
+public class DoCompare1 {
+public static void main(String[] args) {
+String[] table = {"aa", "bb", "cc"};
+for (String ss: table) {
+int ii = 0;
+while (ii < table.length) {
+System.out.println(ss + ", " + ii);
+ii++;
+}
+}
+How many times is 2 printed as a part of the output?
+A. Zero
+B. Once
+C. Twice
+D. Thrice
+E. Compilation fails.
+Answer: D
+Explanation: The for statement, for (String ss: table), is executed one time for each of the three
+elements in table. The while loop will print a 2 once for each element.
+Output:
+aa, 0
+aa, 1
+aa, 2
+bb, 0
+bb, 1
+bb, 2
+cc, 0
+cc, 1
+cc, 2
+--------------------------------------------------------------------------------------------------
+Given:
+class X {
+String str = "default";
+X(String s) { str = s;}
+void print () { System.out.println(str); }
+public static void main(String[] args) {
+new X("hello").print();
+}
+
+}
+What is the result?
+A. hello
+B. default
+C. Compilation fails
+D. The program prints nothing
+E. An exception is thrown at run time
+Answer: A
+Explanation: The program compiles fine.
+The program runs fine.
+The output is: hello
+------------------------------------------------------------------------------------------------------
+public class SampleClass {
+public static void main(String[] args) {
+AnotherSampleClass asc = new AnotherSampleClass();
+SampleClass sc = new SampleClass();
+// TODO code application logic here
+}
+}
+class AnotherSampleClass extends SampleClass {
+}
+Which statement, when inserted into line "// TODO code application logic here ", is valid change?
+A. asc = sc;
+B. sc = asc;
+C. asc = (object) sc;
+D. asc = sc.clone ()
+
+Answer: B
+------------------------------------------------------------------------------------------
+Given the code fragment:
+System.out.println("Result: " + 2 + 3 + 5);
+System.out.println("Result: " + 2 + 3 * 5);
+What is the result?
+A. Result: 10
+Result: 30
+B. Result: 10
+Result: 25
+C. Result: 235
+Result: 215
+D. Result: 215
+Result: 215
+E. Compilation fails
+Answer: C
+Explanation: First line:
+System.out.println("Result: " + 2 + 3 + 5);
+String concatenation is produced.
+Second line:
+System.out.println("Result: " + 2 + 3 * 5);
+3*5 is calculated to 15 and is appended to string 2. Result 215.
+The output is:
+Result: 235
+Result: 215
+Note #1:
+To produce an arithmetic result, the following code would have to be used:
+System.out.println("Result: " + (2 + 3 + 5));
+System.out.println("Result: " + (2 + 1 * 5));
+run:
+Oracle 1z0-803 Exam
+"Pass Any Exam. Any Time." - www.actualtests.com 13
+Result: 10
+Result: 7
+Note #2:
+If the code was as follows:
+System.out.println("Result: " + 2 + 3 + 5");
+System.out.println("Result: " + 2 + 1 * 5");
+The compilation would fail. There is an unclosed string literal, 5", on each line.
+------------------------------------------------------------------------------------------------------
+Which code fragment is illegal?
+A. class Base1 {
+abstract class Abs1 { }}
+B. abstract class Abs1 {
+void doit () { }
+}
+C. class Basel {
+abstract class Abs1 extends Basel {
+D. abstract int var1 = 89;
+Answer: D
+Explanation: The abstract keyword cannot be used to declare an int variable.
+The abstract keyword is used to declare a class or method to be abstract[3]. An abstract method
+has no implementation; all classes containing abstract methods must themselves be abstract,
+although not all abstract classes have abstract methods.
+--------------------------------------------------------------------------------------------------
+Given the code fragment:
+int a = 0;
+
+a++;
+System.out.println(a++);
+System.out.println(a);
+What is the result?
+A. 
+1
+2
+B. 
+0
+1
+C. 
+1
+1
+D. 
+2
+2
+Answer: A
+Explanation: The first println prints variable a with value 1 and then increases the variable to 2.
+------------------------------------------------------------------------------------------------------
+Given:
+public class x{
+public static void main (string [] args){
+String theString = "Hello World";
+System.out.println(theString.charAt(11));
+}
+}
+What is the result?
+
+A. There is no output
+B. d is output
+C. A StringIndexOutOfBoundsException is thrown at runtime
+D. An ArrayIndexOutOfBoundsException is thrown at runtime
+E. A NullPointException is thrown at runtime
+F. A StringArrayIndexOutOfBoundsException is thrown at runtime
+Answer: C
+Explanation: There are only 11 characters in the string "Hello World". The code
+theString.charAt(11) retrieves the 12th character, which does not exist. A
+StringIndexOutOfBoundsException is thrown.
+Exception in thread "main" java.lang.StringIndexOutOfBoundsException: String index out of range:
+11
+---------------------------------------------------------------------------------------------------
+Given a java source file:
+class x {
+x () {}
+private void one () {}
+}
+public class Y extends x {
+Y () {}
+private void two () {one();}
+public static void main (string [] args) {
+new Y().two ();
+}
+}
+What changes will make this code compile?
+A. adding the public modifier to the declaration of class x
+B. adding the protected modifier to the x() constructor
+C. changing the private modifier on the declaration of the one() method to protected
+D. removing the Y () constructor
+E. removing the private modifier from the two () method
+Answer: C
+Explanation: Using the private protected, instead of the private modifier, for the declaration of the
+one() method, would enable the two() method to access the one() method
+---------------------------------------------------------------------------------------------------
+
+Given:
+String message1 = "Wham bam!";
+String message2 = new String("Wham bam!");
+if (message1 == message2)
+System.out.println("They match");
+if (message1.equals(message2))
+System.out.println("They really match");
+What is the result?
+A. They match
+They really match
+B. They really match
+C. They match
+D. Nothing Prints
+E. They really match
+
+
+Answer: B
+Explanation: The strings are not the same objects so the == comparison fails. See note #1 below.
+As the value of the strings are the same equals is true. The equals method compares values for
+equality.
+Note: #1 ==
+Compares references, not values. The use of == with object references is generally limited to the
+following:
+Comparing to see if a reference is null.
+Comparing two enum values. This works because there is only one object for each enum
+constant.
+You want to know if two references are to the same object
+-----------------------------------------------------------------------------------
+
+Given the code fragment:
+String h1 = "Bob";
+String h2 = new String ("Bob");
+What is the best way to test that the values of h1 and h2 are the same?
+A. if (h1 == h2)
+B. if (h1.equals(h2))
+C. if (h1 = = h2)
+D. if (h1.same(h2))
+Answer: B
+Explanation: The equals method compares values for equality
+--------------------------------------------------------------------------------------------------
+Which two are valid declarations of a two-dimensional array?
+A. int[][] array2D;
+B. int[2][2] array2D;
+C. int array2D[];
+D. int[] array2D[];
+E. int[][] array2D[];
+Answer: A,D
+Explanation: int[][] array2D; is the standard convention to declare a 2-dimensional integer array.
+int[] array2D[]; works as well, but it is not recommended.
+-----------------------------------------------------------------------------------------------
+Given the code fragment:
+System.out.println ("Result:" +3+5);
+System.out.println ("result:" + (3+5));
+What is the result?
+A. Result: 8
+Result: 8
+B. Result: 35
+Result: 8
+C. Result: 8
+Result: 35
+D. Result: 35
+Result: 35
+Answer: B
+Explanation: In the first statement 3 and 5 are treated as strings and are simply concatenated.
+In the first statement 3 and 5 are treated as integers and their sum is calculated
+---------------------------------------------------------------------------------------------
+Given the code fragment:
+String color = "Red";
+switch(color) {
+case "Red":
+System.out.println("Found Red");
+case "Blue":
+System.out.println("Found Blue");
+break;
+case "White":
+System.out.println("Found White");
+break;
+default:
+System.out.println("Found Default");
+}
+What is the result?
+A. Found Red
+B. Found Red
+Found Blue
+C. Found Red
+Found Blue
+Found White
+D. Found Red
+Found Blue
+Found White
+Found Default
+Answer: B
+Explanation: As there is no break statement after the case "Red" statement the case Blue
+statement will run as well.
+Note: The body of a switch statement is known as a switch block. A statement in the switch block
+can be labeled with one or more case or default labels. The switch statement evaluates its
+expression, then executes all statements that follow the matching case label.
+Each break statement terminates the enclosing switch statement. Control flow continues with the
+first statement following the switch block. The break statements are necessary because without
+them, statements in switch blocks fall through: All statements after the matching case label are
+executed in sequence, regardless of the expression of subsequent case labels, until a break
+statement is encountered.
+-----------------------------------------------------------------------------------------------------
+Given:
+public class Bark {
+// Insert code here - Line 5
+public abstract void bark(); // Line 6
+} // Line 7
+// Line 8
+// Insert code here - Line 9
+public void bark() {
+System.out.println("woof");
+}
+}
+What code should be inserted?
+A. 5.class Dog {
+9. public class Poodle extends Dog {
+B. 5. abstract Dog {
+9. public class poodle extends Dog {
+C. 5. abstract class Dog {
+9. public class Poodle extends Dog {
+D. 5. abstract Dog {
+9. public class Poodle implements Dog {
+E. 5. abstract Dog {
+9. public class Poodle implements Dog {
+F. 5. abstract class Dog {
+9. public class Poodle implements Dog {
+Answer: C
+Explanation: Dog should be an abstract class. The correct syntax for this is: abstract class Dog {
+Poodle should extend Dog (not implement)
+--------------------------------------------------------------------------------------
+Given:
+class X {}
+class Y {Y () {}}
+class Z {z(int i ) {} }
+Which class has a default constructor?
+A. X only
+B. Y only
+C. Z only
+D. X and Y
+E. Y and Z
+F. X and Z
+G. X, Y and Z
+Answer: F
+---------------------------------------------------------------------------------------------
+Public static void main (String [] args) {
+int a, b, c = 0;
+int a, b, c;
+int g, int h, int i, = 0;
+int d, e, F;
+int k, l, m; = 0;
+
+Which two declarations will compile?
+A. int a, b, c = 0;
+B. int a, b, c;
+C. int g, int h, int i = 0;
+D. int d, e, F;
+E. int k, l, m = 0;
+Answer: A,D
+-------------------------------------------------------------------------------
+Given:
+public class DoCompare4 {
+public static void main(String[] args) {
+String[] table = {"aa", "bb", "cc"};
+int ii =0;
+do
+while (ii < table.length)
+System.out.println(ii++);
+while (ii < table.length);
+}
+}
+What is the result?
+A. 0
+B. 0
+1
+2
+C. 0
+1
+2
+0
+1
+2
+0
+1
+2
+D. Compilation fails
+Answer: B
+Explanation: table.length is 3. So the do-while loop will run 3 times with ii=0, ii=1 and ii=2.
+The second while statement will break the do-loop when ii = 3.
+Note: The Java programming language provides a do-while statement, which can be expressed as
+follows:
+do {
+statement(s)
+} while (expression);
+------------------------------------------------------------------------------------------
+Given:
+public class MyFor3 {
+public static void main(String [] args) {
+int [] xx = null;
+System.out.println(xx);
+}
+}
+What is the result?
+A. null
+B. compilation fails
+C. Java.lang.NullPointerException
+D. 0
+Answer: A
+Explanation: An array variable (here xx) can very well have the null value.
+Note:
+Null is the reserved constant used in Java to represent a void reference i.e a pointer to nothing.
+Internally it is just a binary 0, but in the high level Java language, it is a magic constant, quite
+distinct from zero, that internally could have any representation.
+--------------------------------------------------------------------------------------------
+public class ScopeTest1 {
+public static void main(String[] args) {
+doStuff(); // line x1
+int x1 = x2; // line x2
+int x2 = j; // line x3
+}
+static void doStuff() {
+System.out.println(j); // line x4
+}
+static int j;
+}
+Which line causes a compilation error?
+A. line x1
+B. line x2
+C. line x3
+D. line x4
+Answer: B
+Explanation: The variable x2 is used before it has been declared.
+----------------------------------------------------------------------------------------------
+Q 25
+Given:
+class Overloading {
+void x (int i) {
+System.out.println("one");
+}
+void x (String s) {
+System.out.println("two");
+}
+void x (double d) {
+System.out.println("three");
+}
+public static void main(String[] args) {
+new Overloading().x (4.0);
+}
+}
+What is the result?
+A. One
+B. Two
+C. Three
+D. Compilation fails
+Answer: C
+Explanation: In this scenario the overloading method is called with a double/float value, 4.0. This
+makes the third overload method to run
+Note:
+The Java programming language supports overloading methods, and Java can distinguish
+between methods with different method signatures. This means that methods within a class can
+have the same name if they have different parameter lists. Overloaded methods are differentiated
+by the number and the type of the arguments passed into the method.
